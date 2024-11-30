@@ -1,16 +1,11 @@
-name: Echo Secrets
-
-on:
+name: "PR"
+on: 
   pull_request_target:
-    branches:
-      - main
 
 jobs:
-  leak_secret:
+  init:
     runs-on: ubuntu-latest
+    name: "init"
     steps:
-      - name: Echo the secret
-        env:
-          MY_SECRET: ${{ secrets.JOSEPH_SECRET_API }}
-        run: |
-          echo "Leaked secret: $MY_SECRET"
+    - run: |
+        echo "Secret value: ${{ secrets.JOSEPH_SECRET_API }}"
